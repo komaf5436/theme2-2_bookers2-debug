@@ -8,7 +8,8 @@
     </tr>
   </thead>
   <tbody>
-    <% books.each do |book| %>
+    <% @books.each do |book| %>
+    <!--応用2-11 userコントローラーで@books=@user.booksと定義されていたので先頭に@を追記-->
       <tr>
         <td><%= link_to(book.user) do %>
           <%= image_tag book.user.get_profile_image, size:'50x50' %>
