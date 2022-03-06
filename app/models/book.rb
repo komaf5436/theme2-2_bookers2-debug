@@ -1,7 +1,14 @@
 class Book < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  # 応用2-21 1:Nの関係のためuserモデルに所属している形になるのでhas_manyではなく、belongs_toに変更
+  has_many :favorites, dependent: :destroy
+  # 課題3 1:Nの関係によりfavoriteに対して複数のレコードを持っているためhas_manyを使用
+
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+  # 課題3 Favoritesテーブル内に存在するか調べるため上記を追記
 end

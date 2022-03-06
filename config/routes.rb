@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index,:show,:edit,:update]
-  resources :books
+  resources :books do
+   resource :favorites, only:[:create, :destroy]
+  # 課題3 ネストする　親子関係にする
+  # 課題3 単数系resourceにすることで/:idがURLに含まれなくなる
+  end
 
 end
-
-# 応用2-1 endが抜けていた
-# 2-3 devise_forがresources:usersより下に記載されていたのでループしてしまっていた
