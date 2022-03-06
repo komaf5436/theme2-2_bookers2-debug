@@ -6,7 +6,10 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  # 課題3 1:Nの関係によりfavoriteに対して複数のレコードを持っているためhas_manyを使用
+  # 課題3 いいね実装 1:Nの関係によりfavoriteに対して複数のレコードを持っているためhas_manyを使用
+
+  has_many :book_comments, dependent: :destroy
+  # 課題3 コメント実装 1:Nの関係によりbook_commentに対して複数のレコードを持っているためhas_manyを使用
 
   has_one_attached :profile_image
 

@@ -2,7 +2,10 @@ class Book < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :favorites, dependent: :destroy
-  # 課題3 1:Nの関係によりfavoriteに対して複数のレコードを持っているためhas_manyを使用
+  # 課題3 いいね実装 1:Nの関係によりfavoriteに対して複数のレコードを持っているためhas_manyを使用
+
+  has_many :book_comments, dependent: :destroy
+  # 課題3 コメント実装 1:Nの関係によりbook_commentに対して複数のレコードを持っているためhas_manyを使用
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
